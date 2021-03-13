@@ -1,0 +1,17 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+  .container
+    = link_to 'Documents Drive', root_path, class: "navbar-brand h1 my-0"
+    %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      %ul.navbar-nav.ms-auto
+        - unless user_signed_in?
+          %li.nav-item
+            = link_to 'Sign in', new_user_session_path, class: "nav-link #{active_class(new_user_session_path)}"
+          %li.nav-item
+            = link_to 'Sign up', new_user_registration_path, class: "nav-link #{active_class(new_user_registration_path)}"
+        - else
+          %li
+            = link_to 'Edit Profile', edit_user_registration_path, class: "nav-link #{active_class(edit_user_registration_path)}"
+          %li
+            = link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link #{active_class(destroy_user_session_path)}"

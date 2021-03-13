@@ -1,0 +1,20 @@
+<div class="row d-flex justify-content-center justify-content-center mt-5">
+    <div class="col-12 col-md-5">
+        <div class="card">
+            <div class="col-12 d-flex flex-column justify-content-center align-items-center my-4">
+              <%- unless current_user.avatar.attached? %>
+                <img src="https://i.imgur.com/Cl8TXa7.png" class="user-avatar" alt="Profile Image">
+              <% else %>
+                <%= image_tag current_user.avatar.service_url, class: "user-avatar", alt: "Profile Image"%>
+              <% end %>
+            </div>
+            <h5 class="text-center">
+              <%= current_user.name %>
+            </h5>
+            <small class="d-block mb-4 text-center text-secondary">
+              <%= current_user.email %>
+            </small>
+            <p class="text-center mx-4 mb-4"> You provide your data to our robot without human interaction. Then it shows stats to you. </p>
+        </div>
+    </div>
+</div>

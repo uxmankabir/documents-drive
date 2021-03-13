@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DocumentsDrive</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Documents Drive</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,6 +14,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'partials/navbar' %>
+    <div class="container my-5">
+      <%= yield %>
+    </div>
+    <%= render "partials/errors" %>
   </body>
 </html>

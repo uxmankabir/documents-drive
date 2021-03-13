@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ .user-avatar {
+   border-radius: 50%;
+   width: 140px;
+   height: 140px;
+   margin-top: 10px;
+ }

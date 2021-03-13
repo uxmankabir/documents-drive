@@ -1,0 +1,19 @@
+.position-fixed.top-0.end-0.toast-placement{style: "z-index: 5"}
+  - flash.each do |key, value|
+    - next unless key == "notice" || key == "alert"
+    - toast_class = "bg-success" if key == 'notice'
+    - toast_class = "bg-danger" if key == 'alert'
+    #liveToast.toast.hide.text-white{class: "#{toast_class}", role: "alert", "aria-live" => "assertive", "aria-atomic" => "true"}
+      .d-flex
+        .toast-body
+          = value
+        %button.btn-close.btn-close-white.me-2.m-auto{type: "button", "data-bs-dismiss" => "toast", "aria-label" => "Close"}
+
+= content_for :javascript do
+  :javascript
+    $(function () {
+      var flash_messages_count = "#{flash.count}"
+      if(parseInt(flash_messages_count) > 0){
+        $('.toast').toast('show');
+      }
+    })

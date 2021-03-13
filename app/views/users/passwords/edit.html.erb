@@ -1,0 +1,33 @@
+<div class="vh-center row">
+  <div class="col-12 col-md-7 mx-auto">
+    <div class="card">
+      <div class="card-body">
+
+        <h2 class="text-center my-3">Change your password</h2>
+
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "users/shared/error_messages", resource: resource %>
+          <%= f.hidden_field :reset_password_token %>
+
+          <div class="mb-3">
+            <%= f.label :password, "New password", class: "form-label" %>
+            <%= f.password_field :password, autofocus: true, class: "form-control" %>
+            <% if @minimum_password_length %>
+              <div class="form-text">(<%= @minimum_password_length %> characters minimum)</div>
+            <% end %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :password_confirmation, "Confirm new password", class: "form-label" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.submit "Change my password", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
