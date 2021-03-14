@@ -1,5 +1,21 @@
 .row
-  .col-12
+  .col-12.d-flex.justify-content-between.align-items-center
     %h2
       %i.bi.bi-folder2.me-2
       = @folder.name
+    .actions-buttons
+      %button.btn.btn-primary{"data-bs-target" => "#documentModal", "data-bs-toggle" => "modal", :type => "button"}
+        %i.bi.bi-cloud-arrow-up.me-2
+        Upload Document
+    = render 'document_form'
+
+.row.mt-5
+  - @folder.documents.each do |document|
+    .col-12.col-md-4.col-lg-3.d-flex.flex-column.justify-content-center.align-items-center
+      - if document.content_type.include?("image")
+        = image_tag url_for(document), class: "img-thumbnail"
+      - else
+        = link_to url_for(document), class: "file-icon" do
+          %i.bi.bi-file-earmark-text
+        %small
+          = document.blob.filename.to_s

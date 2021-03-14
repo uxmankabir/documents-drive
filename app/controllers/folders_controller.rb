@@ -14,6 +14,12 @@ class FoldersController < ApplicationController
     end
   end
 
+  def update
+    folder = Folder.find(params[:id])
+    folder.documents.attach(params[:folder][:documents])
+    redirect_to folder_path(folder)
+  end
+
   private
 
   def folder_params
