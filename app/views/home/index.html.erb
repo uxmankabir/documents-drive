@@ -5,7 +5,7 @@
               <%- unless current_user.avatar.attached? %>
                 <img src="https://i.imgur.com/Cl8TXa7.png" class="user-avatar" alt="Profile Image">
               <% else %>
-                <%= image_tag current_user.avatar.service_url, class: "user-avatar", alt: "Profile Image"%>
+                <%= image_tag url_for(current_user.avatar), class: "user-avatar", alt: "Profile Image"%>
               <% end %>
             </div>
             <h5 class="text-center">
